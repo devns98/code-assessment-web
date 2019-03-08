@@ -5,7 +5,8 @@ import ProductItem from './ProductItem'
 
 const setup = product => {
   const actions = {
-    onAddToCartClicked: jest.fn()
+    onAddToCartClicked: jest.fn(),
+    onRemoveFromCartClicked: jest.fn()
   }
 
   const component = shallow(
@@ -50,6 +51,7 @@ describe('ProductItem component', () => {
     const { button, actions } = setup(productProps)
     button.simulate('click')
     expect(actions.onAddToCartClicked).toBeCalled()
+    expect(actions.onRemoveFromCartClicked).toBeCalled()
   })
 
   describe('when product inventory is 0', () => {
